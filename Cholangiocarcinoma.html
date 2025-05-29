@@ -1,0 +1,853 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biliary System Cancers - Medical Summary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 50%, #f0fff0 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #2563eb 0%, #16a34a 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            border-left: 6px solid;
+        }
+
+        .card.blue { border-left-color: #3b82f6; }
+        .card.green { border-left-color: #10b981; }
+        .card.purple { border-left-color: #8b5cf6; }
+        .card.indigo { border-left-color: #6366f1; }
+        .card.amber { border-left-color: #f59e0b; }
+        .card.teal { border-left-color: #14b8a6; }
+
+        .card-header {
+            padding: 1.5rem;
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+        }
+
+        .card-header.green {
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+        }
+
+        .card-header.purple {
+            background: linear-gradient(90deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+        }
+
+        .card-header.indigo {
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.05) 100%);
+        }
+
+        .card-header.amber {
+            background: linear-gradient(90deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+        }
+
+        .card-header.teal {
+            background: linear-gradient(90deg, rgba(20, 184, 166, 0.1) 0%, rgba(20, 184, 166, 0.05) 100%);
+        }
+
+        .card-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-title.blue { color: #1e40af; }
+        .card-title.green { color: #065f46; }
+        .card-title.purple { color: #5b21b6; }
+        .card-title.indigo { color: #3730a3; }
+        .card-title.amber { color: #92400e; }
+        .card-title.teal { color: #0f766e; }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.green { color: #059669; }
+        .section-title.purple { color: #7c3aed; }
+        .section-title.indigo { color: #4f46e5; }
+
+        .grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+        @media (max-width: 768px) {
+            .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-box {
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid;
+            margin-bottom: 1rem;
+        }
+
+        .info-box.blue {
+            background: #eff6ff;
+            border-left-color: #3b82f6;
+        }
+
+        .info-box.red {
+            background: #fef2f2;
+            border-left-color: #ef4444;
+        }
+
+        .info-box.yellow {
+            background: #fffbeb;
+            border-left-color: #f59e0b;
+        }
+
+        .info-box.green {
+            background: #f0fdf4;
+            border-left-color: #10b981;
+        }
+
+        .info-box.purple {
+            background: #faf5ff;
+            border-left-color: #8b5cf6;
+        }
+
+        .info-box.orange {
+            background: #fff7ed;
+            border-left-color: #f97316;
+        }
+
+        .info-box.gray {
+            background: #f9fafb;
+            border-left-color: #6b7280;
+        }
+
+        .info-box.pink {
+            background: #fdf2f8;
+            border-left-color: #ec4899;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge.secondary {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .badge.blue {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .badge.green {
+            background: #10b981;
+            color: white;
+        }
+
+        .badge.purple {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .badge.pink {
+            background: #ec4899;
+            color: white;
+        }
+
+        .badge.outline {
+            background: transparent;
+            border: 1px solid #d1d5db;
+            color: #374151;
+        }
+
+        .small-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid #d1d5db;
+        }
+
+        .table thead th {
+            background: #f3f4f6;
+            font-weight: 600;
+        }
+
+        .table .row-green { background: #f0fdf4; }
+        .table .row-yellow { background: #fffbeb; }
+        .table .row-red { background: #fef2f2; }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 0.25rem 0;
+        }
+
+        .icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            display: inline-block;
+        }
+
+        .icon-lg {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .text-center { text-align: center; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .text-sm { font-size: 0.875rem; }
+        .text-xs { font-size: 0.75rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .space-y-1 > * + * { margin-top: 0.25rem; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .space-y-3 > * + * { margin-top: 0.75rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+
+        .highlight {
+            background: #fef3c7;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Biliary System Cancers</h1>
+        <p>Cholangiocarcinoma & Gallbladder Cancer - Medical Summary</p>
+    </div>
+
+    <div class="container">
+        
+        <!-- Cholangiocarcinoma Section -->
+        <div class="card blue">
+            <div class="card-header">
+                <h2 class="card-title blue">
+                    <span class="icon-lg">🩺</span>
+                    I. Cholangiocarcinoma
+                </h2>
+            </div>
+            <div class="card-content">
+                
+                <!-- Definition -->
+                <div class="mb-6">
+                    <h3 class="section-title blue">
+                        <span class="icon">⚠️</span>
+                        Definition
+                    </h3>
+                    <div class="info-box blue">
+                        <p>Described as an "obstructive jaundice" type of cancer, meaning it causes jaundice by blocking the flow of bile. It is a malignancy originating in the bile ducts.</p>
+                    </div>
+                </div>
+
+                <!-- Epidemiology -->
+                <div class="mb-6">
+                    <h3 class="section-title blue">Epidemiology</h3>
+                    <div class="grid grid-cols-2">
+                        <div class="info-box gray">
+                            <div class="badge secondary">Incidence</div>
+                            <p>Relatively uncommon GI tract cancer: ~2 cases per 100,000 people</p>
+                        </div>
+                        <div class="info-box gray">
+                            <div class="badge secondary">Age Distribution</div>
+                            <p>Affects older age groups more frequently than younger ones</p>
+                        </div>
+                    </div>
+                    <div class="info-box red mt-4">
+                        <h4 class="font-semibold">Problem with Diagnosis</h4>
+                        <p class="text-sm mt-1">Significant problem is delayed diagnosis. Patients often present at advanced stage when curative resection is difficult or impossible, leading to poor prognosis.</p>
+                    </div>
+                </div>
+
+                <!-- Risk Factors -->
+                <div class="mb-6">
+                    <h3 class="section-title blue">Risk Factors</h3>
+                    <div class="grid grid-cols-4">
+                        <div class="small-card" style="border-left: 4px solid #ef4444; background: #fef2f2;">
+                            <h4 class="font-semibold mb-2" style="color: #dc2626;">Infectious Factors</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Chronic inflammation (key driver)</li>
+                                <li>• Parasitic infections</li>
+                                <li>• Clonorchis sinensis (liver fluke)</li>
+                            </ul>
+                        </div>
+                        <div class="small-card" style="border-left: 4px solid #f97316; background: #fff7ed;">
+                            <h4 class="font-semibold mb-2" style="color: #ea580c;">Inflammatory Conditions</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Primary Sclerosing Cholangitis (PSC)</li>
+                                <li>• Significant risk factor</li>
+                            </ul>
+                        </div>
+                        <div class="small-card" style="border-left: 4px solid #f59e0b; background: #fffbeb;">
+                            <h4 class="font-semibold mb-2" style="color: #d97706;">Congenital</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Choledochal Cysts</li>
+                                <li>• Congenital dilations of bile ducts</li>
+                            </ul>
+                        </div>
+                        <div class="small-card" style="border-left: 4px solid #10b981; background: #f0fdf4;">
+                            <h4 class="font-semibold mb-2" style="color: #059669;">Other Factors</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Gallstones (less common)</li>
+                                <li>• Exposure to certain toxins</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pathology -->
+                <div class="mb-6">
+                    <h3 class="section-title blue">Pathology</h3>
+                    <div class="info-box purple">
+                        <p><strong>Most common histological type:</strong> Adenocarcinoma (90%), originating from the mucosal lining of the bile ducts</p>
+                    </div>
+                </div>
+
+                <!-- Classification by Location -->
+                <div class="mb-6">
+                    <h3 class="section-title blue">Classification (Location)</h3>
+                    <div class="grid grid-cols-3">
+                        <div class="small-card text-center" style="border-left: 4px solid #10b981; background: #f0fdf4;">
+                            <div class="badge green mb-2">Peripheral (Intrahepatic)</div>
+                            <p class="text-sm font-bold">10-20% of cases</p>
+                            <p class="text-sm mt-2">Occurs within the liver parenchyma. Often presents similarly to Hepatocellular Carcinoma (HCC)</p>
+                        </div>
+                        <div class="small-card text-center" style="border-left: 4px solid #8b5cf6; background: #faf5ff;">
+                            <div class="badge purple mb-2">Central (Perihilar/Hilar)</div>
+                            <p class="text-sm font-bold">40-60% of cases</p>
+                            <p class="text-sm mt-2">Most common type. Occurs at confluence of right and left hepatic ducts. Surgically challenging due to porta hepatis location</p>
+                        </div>
+                        <div class="small-card text-center" style="border-left: 4px solid #ec4899; background: #fdf2f8;">
+                            <div class="badge pink mb-2">Distal</div>
+                            <p class="text-sm font-bold">20-30% of cases</p>
+                            <p class="text-sm mt-2">Occurs in common bile duct (CBD) down to ampulla of Vater. 10-15% of periampullary carcinomas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clinical Presentation -->
+                <div class="mb-6">
+                    <h3 class="section-title blue">
+                        <span class="icon">📊</span>
+                        Clinical Presentation
+                    </h3>
+                    <div class="grid grid-cols-2">
+                        <div class="space-y-3">
+                            <div class="info-box yellow">
+                                <h4 class="font-semibold">Jaundice (90%)</h4>
+                                <p class="text-sm">Most common presentation, typically gradual in onset</p>
+                            </div>
+                            <div class="info-box orange">
+                                <h4 class="font-semibold">Pruritus/Itching (60-70%)</h4>
+                                <p class="text-sm">Can occur even before overt jaundice is noticeable. Sometimes leads to misdiagnosis as dermatological issue</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="info-box red">
+                                <h4 class="font-semibold">Other Symptoms (30-50%)</h4>
+                                <p class="text-sm">Fever, abdominal pain, weight loss, cachexia (less common, usually in advanced stages)</p>
+                            </div>
+                            <div class="info-box blue">
+                                <h4 class="font-semibold">Cholangitis</h4>
+                                <p class="text-sm">Obstruction and stasis can lead to bacterial infection</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Charcot's Triad & Reynolds' Pentad -->
+                    <div class="grid grid-cols-2 mt-4">
+                        <div class="small-card" style="border: 1px solid #6366f1; background: #eef2ff;">
+                            <h4 class="font-semibold mb-2" style="color: #4338ca;">Charcot's Triad</h4>
+                            <p class="text-sm">Characteristic of cholangitis:</p>
+                            <ul class="text-sm mt-1 space-y-1">
+                                <li>• Fever</li>
+                                <li>• Jaundice</li>
+                                <li>• Abdominal pain</li>
+                            </ul>
+                        </div>
+                        <div class="small-card" style="border: 1px solid #dc2626; background: #fef2f2;">
+                            <h4 class="font-semibold mb-2" style="color: #dc2626;">Reynolds' Pentad</h4>
+                            <p class="text-sm">Charcot's Triad plus:</p>
+                            <ul class="text-sm mt-1 space-y-1">
+                                <li>• Altered mental status</li>
+                                <li>• Hypotension</li>
+                                <li><em>(Indicates severe suppurative cholangitis)</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diagnosis -->
+                <div class="mb-6">
+                    <h3 class="section-title blue">Diagnosis</h3>
+                    
+                    <!-- Laboratory Tests -->
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2" style="color: #7c3aed;">Laboratory Tests</h4>
+                        <div class="grid grid-cols-2">
+                            <div class="info-box purple">
+                                <ul class="text-sm space-y-1">
+                                    <li><strong>Elevated Bilirubin:</strong> Primarily direct (conjugated) bilirubin in obstructive jaundice</li>
+                                    <li><strong>Elevated ALP:</strong> Can be elevated from bone or bile ducts</li>
+                                </ul>
+                            </div>
+                            <div class="info-box purple">
+                                <ul class="text-sm space-y-1">
+                                    <li><strong>Elevated GGT:</strong> More specific for biliary obstruction when elevated with ALP</li>
+                                    <li><strong>CA 19-9:</strong> Tumor marker for biliary system tumors (not highly specific)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Imaging -->
+                    <div>
+                        <h4 class="font-semibold mb-2" style="color: #7c3aed;">Imaging</h4>
+                        <div class="grid grid-cols-3">
+                            <div class="small-card" style="border-left: 4px solid #6b7280; background: #f9fafb;">
+                                <div class="badge outline mb-1">Ultrasound</div>
+                                <p class="text-xs">Initial imaging. Identifies dilated bile ducts, sometimes visualizes mass/stones</p>
+                            </div>
+                            <div class="small-card" style="border-left: 4px solid #3b82f6; background: #eff6ff;">
+                                <div class="badge outline mb-1">CT Scan</div>
+                                <p class="text-xs">Staging, assessing mass extent, looking for metastasis</p>
+                            </div>
+                            <div class="small-card" style="border-left: 4px solid #10b981; background: #f0fdf4;">
+                                <div class="badge outline mb-1">MRCP</div>
+                                <p class="text-xs">Highly valuable, detailed biliary tree visualization</p>
+                            </div>
+                            <div class="small-card" style="border-left: 4px solid #f59e0b; background: #fffbeb;">
+                                <div class="badge outline mb-1">ERCP</div>
+                                <p class="text-xs">Direct visualization, therapeutic interventions, cytology/biopsy</p>
+                            </div>
+                            <div class="small-card" style="border-left: 4px solid #8b5cf6; background: #faf5ff;">
+                                <div class="badge outline mb-1">EUS</div>
+                                <p class="text-xs">Best for assessing resectability, vascular invasion, guided FNA</p>
+                            </div>
+                            <div class="small-card" style="border-left: 4px solid #ec4899; background: #fdf2f8;">
+                                <div class="badge outline mb-1">PET Scan</div>
+                                <p class="text-xs">Assessing distant metastasis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staging -->
+                <div class="mb-6">
+                    <h3 class="section-title blue">Staging</h3>
+                    <div class="grid grid-cols-2">
+                        <div class="info-box blue">
+                            <h4 class="font-semibold mb-2">Bismuth-Corlette Classification</h4>
+                            <p class="text-sm">Specifically for perihilar cholangiocarcinoma. Classifies tumor based on extension within biliary tree. Important for surgical planning and resectability assessment.</p>
+                        </div>
+                        <div class="info-box gray">
+                            <h4 class="font-semibold mb-2">AJCC TNM Staging</h4>
+                            <p class="text-sm">Describes primary tumor (T), regional lymph nodes (N), and distant metastasis (M).</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Treatment Section -->
+        <div class="card green">
+            <div class="card-header green">
+                <h2 class="card-title green">
+                    <span class="icon-lg">✂️</span>
+                    Treatment
+                </h2>
+            </div>
+            <div class="card-content">
+                
+                <!-- Surgery -->
+                <div class="mb-6">
+                    <h3 class="section-title green">Surgery (Resection) - Only Potential for Cure</h3>
+                    <p class="text-sm mb-4" style="color: #6b7280;">Resectability depends heavily on location, extent of tumor, and involvement of major vessels.</p>
+                    
+                    <div class="grid grid-cols-3">
+                        <div class="small-card" style="border-left: 4px solid #3b82f6; background: #eff6ff;">
+                            <h4 class="font-semibold mb-2" style="color: #1d4ed8;">Periampullary/Distal Lesions</h4>
+                            <p class="text-sm">Often treated with <strong>Whipple procedure (Pancreaticoduodenectomy)</strong> as lesions often involve head of pancreas and duodenum</p>
+                        </div>
+                        <div class="small-card" style="border-left: 4px solid #8b5cf6; background: #faf5ff;">
+                            <h4 class="font-semibold mb-2" style="color: #7c3aed;">Perihilar/Hilar Lesions</h4>
+                            <p class="text-sm">Surgically challenging. May require complex resections involving liver parenchyma (hepatectomy) and challenging biliary reconstructions (Hepaticojejunostomy, Roux-en-Y)</p>
+                        </div>
+                        <div class="small-card" style="border-left: 4px solid #10b981; background: #f0fdf4;">
+                            <h4 class="font-semibold mb-2" style="color: #059669;">Intrahepatic Lesions</h4>
+                            <p class="text-sm">Treated with <strong>liver resection</strong>, similar to HCC treatment approach</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box yellow mt-4">
+                        <h4 class="font-semibold mb-2">Liver Transplantation</h4>
+                        <p class="text-sm">Potential option but with significant debate and challenges due to high risk of recurrence compared to HCC. Specific protocols may involve neoadjuvant chemotherapy and radiation.</p>
+                    </div>
+                </div>
+
+                <!-- Biliary Drainage -->
+                <div class="mb-6">
+                    <h3 class="section-title green">Biliary Drainage</h3>
+                    <p class="text-sm mb-3" style="color: #6b7280;">Essential for managing obstructive jaundice, especially in unresectable cases or as bridge to surgery</p>
+                    
+                    <div class="grid grid-cols-2">
+                        <div class="small-card" style="border-left: 4px solid #10b981; background: #f0fdf4;">
+                            <h4 class="font-semibold mb-2" style="color: #059669;">Internal Drainage (Preferred)</h4>
+                            <p class="text-sm mb-2"><strong>Via ERCP with stent placement</strong></p>
+                            <p class="text-xs">Bile drains into GI tract, aiding nutrient absorption and preventing external fluid loss</p>
+                        </div>
+                        <div class="small-card" style="border-left: 4px solid #3b82f6; background: #eff6ff;">
+                            <h4 class="font-semibold mb-2" style="color: #1d4ed8;">External Drainage</h4>
+                            <p class="text-sm mb-2"><strong>Via PTC and PTD catheter placement</strong></p>
+                            <p class="text-xs">Bile drains into external bag</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Treatments -->
+                <div class="mb-6">
+                    <h3 class="section-title green">Other Therapies</h3>
+                    <div class="grid grid-cols-2">
+                        <div class="info-box gray">
+                            <h4 class="font-semibold mb-2">Chemotherapy and Radiotherapy</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Adjuvant (after surgery)</li>
+                                <li>• Neoadjuvant (before surgery)</li>
+                                <li>• Palliative settings</li>
+                            </ul>
+                        </div>
+                        <div class="info-box orange">
+                            <h4 class="font-semibold mb-2">Photodynamic Therapy (PDT)</h4>
+                            <p class="text-sm">Palliative option to relieve obstruction by destroying tumor cells with light after administering photosensitizing agent</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resectability Criteria -->
+                <div class="mb-6">
+                    <h3 class="section-title green">Resectability Criteria</h3>
+                    <div class="grid grid-cols-2">
+                        <div class="space-y-3">
+                            <div class="info-box red">
+                                <h4 class="font-semibold text-sm">Patient Factors</h4>
+                                <p class="text-xs">Overall health, fitness for surgery (ASA score), liver function</p>
+                            </div>
+                            <div class="info-box orange">
+                                <h4 class="font-semibold text-sm">Local Tumor Extent</h4>
+                                <p class="text-xs">Involvement of major blood vessels (portal vein, hepatic artery). Encasement makes tumor unresectable</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="info-box yellow">
+                                <h4 class="font-semibold text-sm">Distant Metastasis</h4>
+                                <p class="text-xs">Presence makes tumor unresectable for cure. PET scan helpful for detection</p>
+                            </div>
+                            <div class="info-box purple">
+                                <h4 class="font-semibold text-sm">Biliary System Involvement</h4>
+                                <p class="text-xs">Involvement of both right and left biliary systems (Bismuth-Corlette Type IV)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Gallbladder Cancer Section -->
+        <div class="card indigo">
+            <div class="card-header indigo">
+                <h2 class="card-title indigo">
+                    <span class="icon-lg">🔬</span>
+                    II. Gallbladder Cancer
+                </h2>
+            </div>
+            <div class="card-content">
+                
+                <!-- Definition & Epidemiology -->
+                <div class="mb-6">
+                    <div class="grid grid-cols-2">
+                        <div>
+                            <h3 class="section-title indigo">Definition & Epidemiology</h3>
+                            <div class="info-box blue space-y-2">
+                                <p><strong>Definition:</strong> Cancer of the gallbladder, described as the 6th most common GI cancer</p>
+                                <p><strong>Gender Distribution:</strong> More common in females than males (3:1 ratio)</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="section-title indigo">Clinical Presentation</h3>
+                            <div class="info-box gray space-y-2">
+                                <p class="text-sm">• Can be asymptomatic</p>
+                                <p class="text-sm">• Symptoms similar to gallstones (biliary colic)</p>
+                                <p class="text-sm">• Advanced cancer: jaundice, palpable mass</p>
+                                <p class="text-sm">• Often incidental finding during cholecystectomy (1-5% of cases)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Factors -->
+                <div class="mb-6">
+                    <h3 class="section-title indigo">Risk Factors</h3>
+                    <div class="grid grid-cols-3">
+                        <div class="small-card" style="border-left: 4px solid #ef4444; background: #fef2f2;">
+                            <h4 class="font-semibold mb-2" style="color: #dc2626;">Gallstones</h4>
+                            <p class="text-sm mb-2"><strong>Most common risk factor</strong></p>
+                            <p class="text-xs">Larger stones (>1.5 cm, some say >1 cm or >2.5 cm) associated with higher malignancy risk</p>
+                        </div>
+                        <div class="small-card" style="border-left: 4px solid #f97316; background: #fff7ed;">
+                            <h4 class="font-semibold mb-2" style="color: #ea580c;">Porcelain Gallbladder</h4>
+                            <p class="text-sm">Calcification of gallbladder wall - strong risk factor</p>
+                        </div>
+                        <div class="small-card" style="border-left: 4px solid #f59e0b; background: #fffbeb;">
+                            <h4 class="font-semibold mb-2" style="color: #d97706;">Gallbladder Polyps</h4>
+                            <p class="text-sm">Risk increases with size. Polyps >1 cm generally recommended for cholecystectomy</p>
+                        </div>
+                        <div class="small-card" style="border-left: 4px solid #10b981; background: #f0fdf4;">
+                            <h4 class="font-semibold mb-2" style="color: #059669;">Chronic Inflammation</h4>
+                            <p class="text-sm">Similar to cholangiocarcinoma (e.g., Salmonella typhi carriers)</p>
+                        </div>
+                        <div class="small-card" style="border-left: 4px solid #3b82f6; background: #eff6ff;">
+                            <h4 class="font-semibold mb-2" style="color: #1d4ed8;">Anomalous Junction</h4>
+                            <p class="text-sm">Pancreaticobiliary junction where pancreatic duct joins CBD outside sphincter of Oddi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Polyp Risk Assessment -->
+                <div class="mb-6">
+                    <h3 class="section-title indigo">Gallbladder Polyp Malignancy Risk</h3>
+                    <div style="overflow-x: auto;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Polyp Size</th>
+                                    <th>Malignancy Risk</th>
+                                    <th>Recommendation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="row-green">
+                                    <td><1 cm</td>
+                                    <td>Low risk (5%)</td>
+                                    <td>Follow-up</td>
+                                </tr>
+                                <tr class="row-yellow">
+                                    <td>1-1.5 cm</td>
+                                    <td>Higher risk (10-12%)</td>
+                                    <td>Consider surgery</td>
+                                </tr>
+                                <tr class="row-red">
+                                    <td>>1.5 cm</td>
+                                    <td>Significantly higher risk (up to 40%)</td>
+                                    <td>Cholecystectomy recommended</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Treatment -->
+                <div class="mb-6">
+                    <h3 class="section-title indigo">Treatment</h3>
+                    <div class="grid grid-cols-2">
+                        <div class="small-card" style="border-left: 4px solid #10b981; background: #f0fdf4;">
+                            <h4 class="font-semibold mb-2" style="color: #059669;">Cholecystectomy</h4>
+                            <p class="text-sm">Standard treatment for early-stage, incidentally found cancers or high-risk polyps</p>
+                        </div>
+                        <div class="small-card" style="border-left: 4px solid #3b82f6; background: #eff6ff;">
+                            <h4 class="font-semibold mb-2" style="color: #1d4ed8;">Extended Cholecystectomy</h4>
+                            <p class="text-sm">For advanced stages: gallbladder + surrounding liver tissue (segments IVb and V) + regional lymph nodes</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 mt-4">
+                        <div class="info-box orange">
+                            <h4 class="font-semibold mb-2">Role of Laparoscopy</h4>
+                            <p class="text-sm">While laparoscopic cholecystectomy is standard for benign disease, it may be contraindicated for suspected/diagnosed gallbladder cancer due to risk of port site metastasis or inadequate resection. Open surgery often preferred.</p>
+                        </div>
+                        <div class="info-box purple">
+                            <h4 class="font-semibold mb-2">Staging & Prognosis</h4>
+                            <p class="text-sm">CT scan essential for staging, assessing local liver invasion and porta hepatis involvement. Generally poor prognosis, especially for advanced stages.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Key Concepts Section -->
+        <div class="card amber">
+            <div class="card-header amber">
+                <h2 class="card-title amber">
+                    <span class="icon-lg">⚠️</span>
+                    III. Key Concepts and Challenges
+                </h2>
+            </div>
+            <div class="card-content">
+                
+                <div class="grid grid-cols-2">
+                    <div class="space-y-4">
+                        <div class="info-box red">
+                            <h4 class="font-semibold mb-2">Importance of Early Diagnosis</h4>
+                            <p class="text-sm">Both cancers have poor prognosis due to late presentation</p>
+                        </div>
+                        <div class="info-box blue">
+                            <h4 class="font-semibold mb-2">Complex Biliary Anatomy</h4>
+                            <p class="text-sm">Surgical treatment, especially perihilar cholangiocarcinoma, is anatomically challenging with delicate reconstructions and high complication risk</p>
+                        </div>
+                        <div class="info-box green">
+                            <h4 class="font-semibold mb-2">Achieving Clear Margins (R0 Resection)</h4>
+                            <p class="text-sm">Crucial for curative surgery but difficult due to infiltrative nature, particularly perineural invasion</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="info-box purple">
+                            <h4 class="font-semibold mb-2">Multidisciplinary Team (MDT) Approach</h4>
+                            <p class="text-sm">Need for discussion involving surgeons, oncologists, radiologists, and pathologists</p>
+                        </div>
+                        <div class="info-box blue">
+                            <h4 class="font-semibold mb-2">Curative vs. Palliative Treatment</h4>
+                            <p class="text-sm">Critical decision based on staging, patient fitness, and presence of unresectable disease</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Important Takeaways -->
+        <div class="card teal">
+            <div class="card-header teal">
+                <h2 class="card-title teal">
+                    <span class="icon-lg">📊</span>
+                    IV. Important Takeaways for Students
+                </h2>
+            </div>
+            <div class="card-content">
+                
+                <div class="grid grid-cols-2">
+                    <div>
+                        <h4 class="font-semibold mb-3" style="color: #0f766e;">Clinical Recognition</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>• Recognize clinical signs of obstructive jaundice (jaundice, pruritus)</li>
+                            <li>• Understand key risk factors for both cancers</li>
+                            <li>• Know Charcot's Triad and Reynolds' Pentad in cholangitis</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-3" style="color: #0f766e;">Diagnostic Workup</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>• Familiar with diagnostic sequence: Ultrasound → Labs → MRCP/CT → EUS</li>
+                            <li>• Appreciate anatomical classification of cholangiocarcinoma</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-3" style="color: #0f766e;">Treatment Concepts</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>• Aware of surgical options and complexities, particularly R0 resection challenges</li>
+                            <li>• Know indications for cholecystectomy in gallbladder polyps and stones</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-3" style="color: #0f766e;">Clinical Note</h4>
+                        <div class="highlight">
+                            <p class="text-sm">
+                                <strong>Note:</strong> This lecture was delivered in Arabic, and this summary is based on the provided English translation. 
+                                Some medical terms might have different connotations in the original language, and audio quality occasionally affected transcription clarity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
