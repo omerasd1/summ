@@ -1,0 +1,1764 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>surgery Investigations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content-wrapper {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            border-left: 5px solid #667eea;
+            padding-left: 25px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .condition {
+            margin-bottom: 35px;
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #e6e9ff;
+        }
+
+        .condition-title {
+            font-size: 1.4rem;
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #764ba2;
+            padding-bottom: 8px;
+        }
+
+        .investigation-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .investigation-item {
+            margin-bottom: 15px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .investigation-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .investigation-name {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .investigation-details {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .sub-investigations {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .sub-investigation {
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            background: #f0f4ff;
+            border-radius: 6px;
+            border-left: 3px solid #764ba2;
+            font-size: 0.9rem;
+        }
+
+        .sub-investigation-name {
+            font-weight: 600;
+            color: #764ba2;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.9);
+            color: #667eea;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .toc {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            border: 2px solid #e6e9ff;
+        }
+
+        .toc h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .toc-list {
+            columns: 2;
+            column-gap: 30px;
+            list-style: none;
+        }
+
+        .toc-item {
+            margin-bottom: 8px;
+            break-inside: avoid;
+        }
+
+        .toc-link {
+            color: #764ba2;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .toc-link:hover {
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .content-wrapper {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .toc-list {
+                columns: 1;
+            }
+            
+            .section {
+                padding-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-btn">← Back to Home</a>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🔬 surgery Investigations</h1>
+      
+        </div>
+
+        <div class="content-wrapper">
+            <div class="toc">
+                <h3>📋 Table of Contents</h3>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#intestinal-obstruction" class="toc-link">Intestinal Obstruction</a></li>
+                    <li class="toc-item"><a href="#malignant-intestine" class="toc-link">Malignant Diseases of Intestine</a></li>
+                    <li class="toc-item"><a href="#malignant-jaundice" class="toc-link">Malignant Obstructive Jaundice</a></li>
+                    <li class="toc-item"><a href="#acute-abdomen" class="toc-link">Acute Abdomen</a></li>
+                    <li class="toc-item"><a href="#liver-diseases" class="toc-link">Liver Diseases</a></li>
+                    <li class="toc-item"><a href="#spleen" class="toc-link">Spleen & Splenomegaly</a></li>
+                    <li class="toc-item"><a href="#stomach-duodenum" class="toc-link">Stomach & Duodenum</a></li>
+                    <li class="toc-item"><a href="#peritoneum" class="toc-link">Peritoneum & Mesentery</a></li>
+                    <li class="toc-item"><a href="#esophagus" class="toc-link">Esophagus</a></li>
+                    <li class="toc-item"><a href="#anal-canal" class="toc-link">Anal Canal</a></li>
+                    <li class="toc-item"><a href="#appendix" class="toc-link">Appendix</a></li>
+                    <li class="toc-item"><a href="#benign-intestinal" class="toc-link">Benign Intestinal Disease</a></li>
+                    <li class="toc-item"><a href="#biliary" class="toc-link">Biliary System</a></li>
+                </ul>
+            </div>
+
+            <div class="section" id="intestinal-obstruction">
+                <h2 class="section-title">
+                    <span class="section-icon">🔄</span>
+                    Intestinal Obstruction
+                </h2>
+                
+                <div class="condition">
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Plain X-ray abdomen erect position</div>
+                            <div class="investigation-details">Shows dilated small bowel loops with air-fluid levels. Jejunum shows circular folds ("valvulae connivents"), ileum shows shapeless tubes, and the colon shows typical haustrations.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">US (Ultrasound)</div>
+                            <div class="investigation-details">Can detect distention and mass.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT (Computed Tomography)</div>
+                            <div class="investigation-details">May show a transition zone and the cause of obstruction, though its sensitivity is less than 50%.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Barium enema</div>
+                            <div class="investigation-details">Used when colonic obstruction is suspected.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory investigations</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">
+                                    <span class="sub-investigation-name">TLC (Total Leukocyte Count):</span> Markedly rises in cases of strangulation.
+                                </div>
+                                <div class="sub-investigation">
+                                    <span class="sub-investigation-name">Serum Electrolytes:</span> Decreased sodium (Na) and potassium (K) levels.
+                                </div>
+                            </div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Nasogastric (N/G) suction</div>
+                            <div class="investigation-details">For differential diagnosis, it relieves pain in hours for simple obstruction but not for strangulated obstruction; it relieves distention in paralytic ileus.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Double enema test</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="malignant-intestine">
+                <h2 class="section-title">
+                    <span class="section-icon">🦠</span>
+                    Malignant Diseases of Intestine
+                </h2>
+                
+                <div class="condition">
+                    <h3 class="condition-title">Peutz-Jegher's Syndrome</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-details">Diagnosed based on multiple familial intestinal hamartomatous polyps, mainly affecting the jejunum, and melanosis of the oral mucous membrane and lips. No specific investigations are listed for diagnosis beyond clinical features.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Familial Polyposis Coli (FPC) and Gardner's Syndrome</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Barium enema</div>
+                            <div class="investigation-details">Shows multiple rounded filling defects throughout the colon and rectum.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Sigmoidectomy or colonoscopy and biopsy</div>
+                            <div class="investigation-details">To prove the nature of the disease.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Genetic screening</div>
+                            <div class="investigation-details">Performed for family members.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Carcinoma of the Colon and Rectum</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Blood picture</div>
+                            <div class="investigation-details">May reveal microcytic hypochromic anemia.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Sigmoidoscopy</div>
+                            <div class="investigation-details">Essential for all patients with altered bowel habits or rectal bleeding, mandatory for patients over 40 complaining of piles. Biopsy obtained from suspicious lesions.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Colonoscopy</div>
+                            <div class="investigation-details">Biopsy from higher tumors can be obtained.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Barium enema</div>
+                            <div class="investigation-details">Shows the tumor as a fixed irregular filling defect. Annular strictures of the left colon show a characteristic "apple core appearance." Useful to exclude a second higher tumor even with a palpable rectal cancer.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Liver function tests, abdominal ultrasound (or CT scan), and chest X-ray</div>
+                            <div class="investigation-details">To detect spread.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Intravenous urogram (IVU)</div>
+                            <div class="investigation-details">Recommended if the tumor is expected to be close to the ureter.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Transrectal ultrasonography or rectal protocol magnetic resonance imaging (MRI)</div>
+                            <div class="investigation-details">Integral for staging rectal tumors to evaluate depth of invasion, circumferential resection margin (CRM), and lymph node status.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Carcinoembryonic antigen (CEA)</div>
+                            <div class="investigation-details">A tumor marker, high in colorectal cancer but not specific. Useful for prognosis and follow-up after surgery.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">For acute intestinal obstruction</div>
+                            <div class="investigation-details">Plain X-ray of the abdomen, blood picture, blood urea, and electrolytes are needed. Barium enema can confirm diagnosis.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="malignant-jaundice">
+                <h2 class="section-title">
+                    <span class="section-icon">🟡</span>
+                    Malignant Obstructive Jaundice
+                </h2>
+                
+                <div class="condition">
+                    <h3 class="condition-title">Cholangiocarcinoma</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory Studies</div>
+                            <div class="investigation-details">Suggest biliary obstruction with elevations in total and direct bilirubin, Alkaline phosphatase (usually increased two- to 10-fold), 5'-nucleotidase, and gamma-glutamyltransferase.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Tumor Markers</div>
+                            <div class="investigation-details">CEA and CA 19-9 may be present, though their diagnostic utility is limited. Biliary insulin-like growth factor I is potentially useful.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiographic Evaluation</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Right upper quadrant ultrasound</div>
+                                <div class="sub-investigation">Dynamic CT scan</div>
+                                <div class="sub-investigation">EUS (Endoscopic Ultrasound)</div>
+                                <div class="sub-investigation">Intraductal US</div>
+                                <div class="sub-investigation">ERCP (Endoscopic Retrograde Cholangiopancreatography) with brushing/biopsy</div>
+                                <div class="sub-investigation">MRCP (Magnetic Resonance Cholangiopancreatography): Emerging as the imaging technique of choice for hilar lesions</div>
+                                <div class="sub-investigation">EUS with fine needle aspiration (FNA): Higher sensitivity than ERCP with brushings and biopsies</div>
+                                <div class="sub-investigation">PET scans: Can detect nodular cholangiocarcinomas as small as 1 cm and identify occult metastases</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Gallbladder Cancer</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory findings</div>
+                            <div class="investigation-details">Not diagnostic but may show abnormalities due to biliary obstruction.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasonography</div>
+                            <div class="investigation-details">Often reveals a thickened, irregular gallbladder wall, mass replacing the gallbladder, or diffuse wall calcification. Can visualize tumor invasion of the liver, lymphadenopathy, and a dilated biliary tree.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT scan</div>
+                            <div class="investigation-details">Important for staging and may identify a gallbladder mass or local invasion into adjacent organs.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Exocrine Pancreatic Cancer</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Symptoms</div>
+                            <div class="investigation-details">Gradual onset, non-specific (dull epigastric pain, malaise, nausea, fatigue, weight loss), "painless jaundice" (classic, but can be painful), pruritus, darkening of urine, light-colored stools, new-onset diabetes.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Examination</div>
+                            <div class="investigation-details">Jaundice, weight loss, palpable abdominal mass (Courvoisier sign), Trousseau's sign (migratory thrombophlebitis), ascites, splenomegaly.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory Tests</div>
+                            <div class="investigation-details">None singularly diagnostic. Elevated serum bilirubin, elevated alkaline phosphatase, mild elevations of serum glutamic-oxaloacetic transaminase and serum glutamate pyruvate transaminase.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Tumor Markers</div>
+                            <div class="investigation-details">CA19-9 (useful for confirmation and follow-up, not screening), Carcinoembryonic antigen (CEA) (elevated in 40-50% of patients).</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiologic Studies</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">CT scan: Appears as a hypoattenuating indistinct mass, often with dilated pancreatic or biliary ductal system ("double-duct" sign). Criteria for resectability include absence of distant metastasis, preserved fat plane between mass and SMV/PV, absence of tumor encasement of hepatic, celiac, or superior mesenteric arteries.</div>
+                                <div class="sub-investigation">Percutaneous (CT- or ultrasonography guided) needle biopsies: Limited role; negative biopsy does not rule out carcinoma.</div>
+                                <div class="sub-investigation">Positron emission tomography (PET): Limited to occult metastatic disease.</div>
+                                <div class="sub-investigation">Ultrasonography: Not as sensitive as CT, limited by bowel gas.</div>
+                                <div class="sub-investigation">MRI: May provide as much information as CT.</div>
+                                <div class="sub-investigation">Endoscopic ultrasonography (EUS): Assesses tumor size, portal and mesenteric vascular involvement, and obtains tissue samples.</div>
+                                <div class="sub-investigation">Staging laparoscopy: Useful for identifying small liver metastases and peritoneal implants.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Endocrine Pancreatic Neoplasms</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Diagnosis</div>
+                            <div class="investigation-details">Recognition of classic clinical syndrome; confirmation by measuring serum levels of elevated hormone.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiological Diagnosis</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Multidetector CT scan with four phases of contrast and fine cuts through the pancreas and liver.</div>
+                                <div class="sub-investigation">EUS: Valuable in localizing tumors.</div>
+                                <div class="sub-investigation">Angiography with venous sampling: Rarely required for accurate localization.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Insulinoma</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Clinical Picture</div>
+                            <div class="investigation-details">Whipple's Triad (symptoms of hypoglycemia, blood glucose < 45 mg/dl during attack, improvement with glucose).</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Investigations</div>
+                            <div class="investigation-details">Decreased Serum glucose, increased insulin, insulin/glucose ratio > 0.3, C-peptides.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Localization</div>
+                            <div class="investigation-details">CT, selective angiography, and selective venous sampling.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Gastrinoma (Zollinger Ellison Syndrome)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Barium meal</div>
+                            <div class="investigation-details">Shows multiple ulcers in unusual sites.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Endoscopy</div>
+                            <div class="investigation-details">Shows multiple ulcers in unusual sites.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Gastrin Level</div>
+                            <div class="investigation-details">By radioimmunoassay; normal < 150 ng/L, most patients > 500 ng/L.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Localization</div>
+                            <div class="investigation-details">CT scan, selective arteriography, selective venous sampling, EUS.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">VIPoma (Vasoactive Intestinal Peptide-Secreting Tumor)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Electrolyte abnormalities</div>
+                            <div class="investigation-details">Should raise suspicion.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Serum VIP levels</div>
+                            <div class="investigation-details">Must be measured on multiple occasions.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT scan</div>
+                            <div class="investigation-details">Localizes most VIPomas.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">EUS</div>
+                            <div class="investigation-details">Most sensitive imaging method.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Glucagonoma</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Diagnosis</div>
+                            <div class="investigation-details">Confirmed by measuring serum glucagon levels (usually >500 pg/mL).</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Somatostatinoma</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Diagnosis</div>
+                            <div class="investigation-details">Confirmed by elevated serum somatostatin levels (usually >10 ng/mL).</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Cystic Pancreatic Neoplasms (CPNs)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Fluid Analysis</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Carcinoembryonic antigen (CEA): High in Mucinous Cystic Neoplasms (MCNs) and Intraductal Papillary Mucinous Tumors (IPMTs); low in serous cysts and pseudocysts.</div>
+                                <div class="sub-investigation">CA 19-9: Can be elevated in malignant cyst neoplasms.</div>
+                                <div class="sub-investigation">CA 72-4: Low in pseudocysts and serous tumors; elevated in benign mucinous cystadenomas and very high in cystic malignancy.</div>
+                                <div class="sub-investigation">Amylase and lipase: Generally high in pseudocysts and low in cystic tumors.</div>
+                                <div class="sub-investigation">Fluid viscosity: Elevated in mucinous tumors and low in pseudocysts and serous cystic tumors.</div>
+                            </div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Percutaneous cytology</div>
+                            <div class="investigation-details">Limited value for detecting malignant cells.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Percutaneous wall biopsy</div>
+                            <div class="investigation-details">Differentiates between pseudocysts and cystic neoplasms, and between serous and mucinous types.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="acute-abdomen">
+                <h2 class="section-title">
+                    <span class="section-icon">🚨</span>
+                    Acute Abdomen
+                </h2>
+                
+                <div class="condition">
+                    <h3 class="condition-title">General Investigations</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Full blood picture</div>
+                                <div class="sub-investigation">Urea and electrolytes</div>
+                                <div class="sub-investigation">Blood sugar</div>
+                                <div class="sub-investigation">Serum amylase</div>
+                                <div class="sub-investigation">Urine analysis</div>
+                            </div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiological</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Plain X-ray of the chest: Erect position may show free gas under the diaphragm in viscus perforation; detects basal pneumonia.</div>
+                                <div class="sub-investigation">Plain X-ray of the abdomen: Shows calculi of the urinary tract, distended bowel loops, single or multiple fluid levels in intestinal obstruction.</div>
+                                <div class="sub-investigation">Abdominal ultrasound: Detects acute calcular cholecystitis (stones, distended GB, thickened walls, subserosal oedema, pericholecystic fluid), acute pancreatitis (enlargement, pseudocyst/abscess, necrosis, fluid collection), leaking aortic aneurysm, distended pelvicalyceal system, gynecological disorders (ruptured/twisted ovarian cyst, ectopic pregnancy, PID).</div>
+                                <div class="sub-investigation">CT scan of the abdomen: Not affected by obesity or ileus. With oral and IV contrast, useful for acute pancreatitis (extent of enlargement, gas, fluid, blood, necrosis), retroperitoneal hemorrhage, bowel infarction (gas in intramural/mesenteric veins/portal vein, bowel wall thickening, mesenteric thrombus), splenic infarction, diverticulitis (bowel wall thickness, abscess), localized fluid collection/free fluid, intestinal obstruction (site of transition, etiology).</div>
+                            </div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Diagnostic Laparoscopy</div>
+                            <div class="investigation-details">Valuable, especially for gynecological problems.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Acute Appendicitis</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Leucocytic count</div>
+                            <div class="investigation-details">Polymorphnuclear leucocytosis and shift to the left; absence does not rule out.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Urine examination, plain X-ray UT, IVU, ultrasound</div>
+                            <div class="investigation-details">If ureteric calculus suspected.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Pelvic ultrasound and laparoscopy</div>
+                            <div class="investigation-details">If tubo-ovarian or uterine problem suspected.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound</div>
+                            <div class="investigation-details">Appendix >6mm diameter, thickened wall, periappendiceal fluid, not compressible, faecolith. Useful to exclude other mimicking diseases.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT scanning</div>
+                            <div class="investigation-details">Dilated appendix >6mm, thickened wall, thick mesoappendix; identifies other inflammatory processes.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laparoscopy</div>
+                            <div class="investigation-details">Exploratory potential, can diagnose and treat.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Pregnancy test</div>
+                            <div class="investigation-details">If ectopic pregnancy suspected.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Acute Cholecystitis</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound</div>
+                            <div class="investigation-details">Diagnostic; detects gallstones (95%), distension of GB, thickened walls, pericholecystic fluid collection, localized tenderness.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Acute Pancreatitis</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Serum amylase</div>
+                            <div class="investigation-details">Rises within 12 hours, normal in 2-3 days; no predictive value.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Plain X-ray of the abdomen</div>
+                            <div class="investigation-details">Excludes other problems.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound</div>
+                            <div class="investigation-details">Reveals enlargement of pancreas, peripancreatic fluid collection, or pancreatic necrosis.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Acute Diverticulitis</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Gastrografin enema</div>
+                            <div class="investigation-details">May be helpful.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Barium enema</div>
+                            <div class="investigation-details">Should be postponed.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT</div>
+                            <div class="investigation-details">May reveal localized thickening of colonic wall, density in pericolic fat, or pericolic abscess.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Perforated Peptic Ulcer</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Plain X-ray of the chest (erect position)</div>
+                            <div class="investigation-details">Reveals free gas under the diaphragm in 60-85% of cases.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Gastrografin meal</div>
+                            <div class="investigation-details">Reveals leakage if X-ray does not show free gas.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Simple Bowel Obstruction</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Plain X-ray</div>
+                            <div class="investigation-details">Reveals distended loops or fluid levels.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT scan with oral contrast</div>
+                            <div class="investigation-details">Very useful in doubtful cases.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Barium enema</div>
+                            <div class="investigation-details">Diagnostic in large bowel obstruction.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Strangulation Intestinal Obstruction</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Leucocytosis</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Mesenteric Ischaemia</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Plain X-ray</div>
+                            <div class="investigation-details">May reveal ground glass appearance.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound and CT scans</div>
+                            <div class="investigation-details">May show occluding thrombus, bowel wall oedema or abnormal gas patterns.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT angiography</div>
+                            <div class="investigation-details">Shows occlusion of superior mesenteric artery orifice or embolus.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Ruptured Ovarian Cyst</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Abdominal and pelvic ultrasound examinations</div>
+                            <div class="investigation-details">Diagnostic.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Torsion of an Ovarian Cyst</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound</div>
+                            <div class="investigation-details">Diagnostic.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laparoscopy</div>
+                            <div class="investigation-details">Diagnostic and therapeutic.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Pelvic Inflammatory Disease (PID)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">High vaginal swab</div>
+                            <div class="investigation-details">For culture and sensitivity.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Ruptured Ectopic Pregnancy</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Chorionic gonadotropin testing</div>
+                            <div class="investigation-details">Positive.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound</div>
+                            <div class="investigation-details">Presence of gestational sac in uterus is against diagnosis; free blood in pelvis.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laparoscopy</div>
+                            <div class="investigation-details">Very helpful.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="liver-diseases">
+                <h2 class="section-title">
+                    <span class="section-icon">🫀</span>
+                    Liver Diseases
+                </h2>
+                
+                <div class="condition">
+                    <h3 class="condition-title">Hepatic Cysts</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Imaging</div>
+                            <div class="investigation-details">Often identified incidentally on imaging for other symptoms.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Distinction from simple cysts</div>
+                            <div class="investigation-details">Presence of a mass or septa distinguishes neoplastic cystic lesions.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Hemangioma</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory</div>
+                            <div class="investigation-details">Not helpful.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Needle biopsy</div>
+                            <div class="investigation-details">Not done.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound</div>
+                            <div class="investigation-details">Well-defined, lobulated, homogeneous, hyperechoic mass (sometimes hypoechoic in fatty livers or with atypical features).</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Multiphasic (contrast) CT scans</div>
+                            <div class="investigation-details">Low-density area with characteristic peripheral enhancement in early phase, progressing centrally, uniformly enhanced in delayed images.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">MRI</div>
+                            <div class="investigation-details">Best imaging study; smooth, lobulated, homogeneous, hypointense on T1-weighted; hyperintense on T2-weighted.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Single photon emission CT (SPECT) with technetium-labeled red blood cells</div>
+                            <div class="investigation-details">Similar accuracy to MRI for lesions >3 cm near surface.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Focal Nodular Hyperplasia (FNH)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound</div>
+                            <div class="investigation-details">First detects focal hepatic lesions but cannot differentiate FNH from other pathology.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Multiphasic CT</div>
+                            <div class="investigation-details">Bright homogeneous enhancement with a hypodense central scar in late arterial phase; central scar and radiating septa may hyperattenuate in delayed phase.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">MRI</div>
+                            <div class="investigation-details">Central scar appears hyperintense on T2-weighted images; similar enhancement pattern to CT with contrast.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Hepatic Adenoma (HA)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound</div>
+                            <div class="investigation-details">Variable echogenicity; often heterogeneous due to hemorrhage/necrosis. Color Doppler may show peripheral peritumoral and intratumoral vessels.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT</div>
+                            <div class="investigation-details">Frequently appears heterogeneous due to intratumor hemorrhage, necrosis. Arterial-phase CT shows multiple hypervascular lesions; portal venous-phase shows isoattenuating relative to surrounding parenchyma.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Hepatocellular Carcinoma (HCC)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory</div>
+                            <div class="investigation-details">Abnormal liver function tests; elevated serum α-fetoprotein (AFP) (>200 ng/mL suggestive).</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiologic studies</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Ultrasound: Highly accurate, especially with AFP elevations; hyperechoic, smaller tumors hypoechoic.</div>
+                                <div class="sub-investigation">Multiphasic CT scan: Enhances in arterial phase, washout of contrast in delayed phase.</div>
+                                <div class="sub-investigation">MRI: Most accurate for distinguishing HCC from dysplastic or regenerative nodules; variable intensity on T1, almost always hyperintense on T2; tumor capsule hypointense on T1 and T2.</div>
+                                <div class="sub-investigation">Laparoscopic or image-guided biopsies.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Pyogenic Liver Abscess</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory findings</div>
+                            <div class="investigation-details">Nonspecific; leukocytosis, elevated alkaline phosphatase, ESR.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiological</div>
+                            <div class="investigation-details">Chest x-ray (elevation of right hemidiaphragm, infiltrate, pleural effusion); CT scanning for definitive diagnosis.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Amebic Abscess</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Diagnosis</div>
+                            <div class="investigation-details">Serologic tests for amebic infestation (nearly 100% positive); leukocytosis, stool analysis.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Imaging</div>
+                            <div class="investigation-details">Ultrasound and CT are most useful.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Echinococcal Cysts (Hydatid Disease)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Imaging</div>
+                            <div class="investigation-details">Nuclear medicine scan, ultrasound, CT scan, or MRI can detect the lesion.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory</div>
+                            <div class="investigation-details">Peripheral eosinophilia often detected. Serologic tests include indirect hemagglutinin and Casoni skin test. Cyst not aspirated for diagnosis.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="spleen">
+                <h2 class="section-title">
+                    <span class="section-icon">🫘</span>
+                    Spleen & Splenomegaly
+                </h2>
+                
+                <div class="condition">
+                    <h3 class="condition-title">Rupture of the Spleen</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Repeated blood picture</div>
+                            <div class="investigation-details">Declining haemoglobin and haematocrit denote haemorrhage.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound or CT scan of the abdomen</div>
+                            <div class="investigation-details">Diagnostic accuracy >90%; monitor hematoma size.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Plain x-ray of the abdomen</div>
+                            <div class="investigation-details">Poor diagnostic substitute but may reveal fractured lower ribs.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Peritoneal lavage</div>
+                            <div class="investigation-details">Reveals blood.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Splenomegaly</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">History and examination findings</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory examination</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Haemolytic anaemia</div>
+                            <div class="investigation-details">CBC, reticulocyte count, tests for haemolysis.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Portal hypertension</div>
+                            <div class="investigation-details">Liver function tests (abnormal), CBC (anaemia, leukopenia, thrombocytopenia), endoscopic evidence of oesophageal varices.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiological Imaging</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Plain radiology: Rarely used, may show calcification of splenic artery/spleen (aneurysm, old infarct, benign cyst, hydatid disease), multiple areas of calcification may suggest TB.</div>
+                                <div class="sub-investigation">Ultrasonography: Determine size and consistency, presence of cyst.</div>
+                                <div class="sub-investigation">Computed tomography (CT) with contrast enhancement: Better characterizes splenic pathology and excludes other intra-abdominal pathology.</div>
+                                <div class="sub-investigation">Magnetic resonance imaging (MRI): Similarly useful.</div>
+                                <div class="sub-investigation">Radioisotope scanning: Occasionally used (technetium 99m).</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Hypersplenism</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Investigations</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Blood picture: Reveals low counts of RBCs, leucocytes, and platelets; elevated reticulocyte count.</div>
+                                <div class="sub-investigation">Peripheral blood smear: Devoid of diagnostic features of leukaemia or myeloproliferative disease.</div>
+                                <div class="sub-investigation">Bone marrow: Reveals pancellular hyperplasia.</div>
+                                <div class="sub-investigation">Radioactive chromium (51Cr) tagged RBCs: Confirms diminished half-life of RBCs and elevated spleen/liver radioactivity ratio.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Hyposplenism</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Diagnosis</div>
+                            <div class="investigation-details">Determined by anatomic presence or absence of the organ, its size, and any lesions.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Function Assessment</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Radiologic techniques: X-ray, ultrasound, tomography, MRI.</div>
+                                <div class="sub-investigation">Morphologically: Peripheral blood smear, presence of Howell-Jolly bodies.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Infections of the Spleen</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Acute Abscess</div>
+                            <div class="investigation-details">Percutaneous drainage under ultrasound or CT guidance.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Hydatid Disease</div>
+                            <div class="investigation-details">Imaging by nuclear medicine scan, ultrasound, CT scan, or MRI. Peripheral eosinophilia often detected. Serologic tests (indirect hemagglutinin, Casoni skin test). Cyst not aspirated for diagnosis.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="stomach-duodenum">
+                <h2 class="section-title">
+                    <span class="section-icon">🍽️</span>
+                    Stomach & Duodenum
+                </h2>
+                
+                <div class="condition">
+                    <h3 class="condition-title">Acute Gastric Dilatation</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-details">No specific investigations listed, primarily clinical picture.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Acute Gastric Ulcer</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">EGD (Esophagogastroduodenoscopy)</div>
+                            <div class="investigation-details">Diagnostic.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Chronic Duodenal Ulcer (DU)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Endoscopy</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Barium or Gastrografin meal</div>
+                            <div class="investigation-details">Shows deformity of the duodenal cap.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Examination of H.pylori infection</div>
+                            <div class="investigation-details">Breath test, serology, or biopsy.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Chronic Gastric Ulcer</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Endoscopy and biopsy</div>
+                            <div class="investigation-details">Mandatory to exclude malignancy.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Barium meal</div>
+                            <div class="investigation-details">Ulcer outpouching (niche) on lesser curve + opposite spastic greater curvature (notch).</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Perforation (Peptic Ulcer complication)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">CXR erect position</div>
+                            <div class="investigation-details">Air under diaphragm (diagnostic).</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">U/S</div>
+                            <div class="investigation-details">Free intra-abdominal collection.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Gastrografin meal</div>
+                            <div class="investigation-details">If CXR and U/S not conclusive.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Bleeding (Peptic Ulcer complication)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Urgent endoscopy</div>
+                            <div class="investigation-details">If active bleeding at ulcer base.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Pyloric Stenosis</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory</div>
+                            <div class="investigation-details">CBC, Electrolytes, ABG.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Endoscopy and biopsy</div>
+                            <div class="investigation-details">(DD: cancer distal stomach).</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Barium or Gastrografin meal</div>
+                            <div class="investigation-details">Stomach may reach pelvis ("soap dish" appearance).</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">GIST (Gastro-intestinal Stromal Tumor)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">EGD</div>
+                            <div class="investigation-details">Usually gastric mass with intact mucosa.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Gastrografin meal</div>
+                            <div class="investigation-details">Filling defect.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT scan abdomen</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Carcinoma of The Stomach</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">EGD</div>
+                            <div class="investigation-details">Diagnostic + biopsy.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Gastrografin meal</div>
+                            <div class="investigation-details">Persistent filling defect, ulcer, severe narrowing (linitis plastica).</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT abdomen triphasic or spiral</div>
+                            <div class="investigation-details">For staging.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CEA level</div>
+                            <div class="investigation-details">For diagnosis and prognosis.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Endoscopic Ultrasound (EUS)</div>
+                            <div class="investigation-details">To detect depth of invasion.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">PET scan</div>
+                            <div class="investigation-details">For distant metastasis.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Diagnostic laparoscopy</div>
+                            <div class="investigation-details">For omental and peritoneal metastasis.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="peritoneum">
+                <h2 class="section-title">
+                    <span class="section-icon">🫁</span>
+                    Surgical Disease of Peritoneum & Mesentery
+                </h2>
+                
+                <div class="condition">
+                    <h3 class="condition-title">Acute Peritonitis</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory</div>
+                            <div class="investigation-details">CBC (anemia), KFTs (pre-renal failure), Serum electrolytes.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiological</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Chest x-rays: Differential diagnosis (pneumonia).</div>
+                                <div class="sub-investigation">Plain abdominal x-rays: Supine and upright positions; gas beneath the diaphragm indicates GI perforation.</div>
+                                <div class="sub-investigation">Gastrografin: Passed into stomach via nasogastric tube to demonstrate perforation (does not irritate peritoneum as barium).</div>
+                                <div class="sub-investigation">Ultrasound: Helps in differential diagnosis (gallstone, GB wall thickness, fluid collection, tumors, kidney stone).</div>
+                                <div class="sub-investigation">CT SCAN: For intraabdominal abscess.</div>
+                            </div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laparoscopy</div>
+                            <div class="investigation-details">Most important diagnostic and therapeutic measure.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Subphrenic Abscess</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Investigations</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Routine: CBC (leucocytosis), CXR (elevated copula of diaphragm, pleural effusion, localized gas).</div>
+                                <div class="sub-investigation">Diagnosis: Abdominal U/S & CT to localize abscess.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Pelvic Abscess</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Physical examination (PR or PV)</div>
+                            <div class="investigation-details">Reveals tense, cystic and tender mass.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Iliac Abscess</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Investigations</div>
+                            <div class="investigation-details">CBC (↑ TLC), U/S.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Mesenteric Cysts</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">U/S- CT scan</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">IVP</div>
+                            <div class="investigation-details">(excludes renal cyst).</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Plain X-Ray</div>
+                            <div class="investigation-details">Calcified hydatid or mesenteric LNs.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Peritoneal Tumors</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Peritoneal carcinomatosis</div>
+                            <div class="investigation-details">Diagnosed by gross picture of peritoneum studded with malignant nodules and ascitic fluid. No specific investigations listed beyond clinical findings.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Pseudomyxoma peritonei</div>
+                            <div class="investigation-details">Abdominal examination shows distended abdomen without shifting dullness, multiple firm masses palpable. No specific investigations listed.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Mesothelioma</div>
+                            <div class="investigation-details">Suspected by exposure to asbestos. No specific investigations listed.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Retroperitoneal Tumors</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Retroperitoneal sarcoma</div>
+                            <div class="investigation-details">Ultrasound and CT scan are very useful for diagnosis; CT accurately localizes the lesion, its size, and reveals infiltration of adjacent structures.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Torsion of the Omentum</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-details">No specific investigations listed, primarily clinical picture.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="esophagus">
+                <h2 class="section-title">
+                    <span class="section-icon">🔀</span>
+                    Surgical Disorders of Esophagus
+                </h2>
+                
+                <div class="condition">
+                    <h3 class="condition-title">Esophageal Perforations</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Inv</div>
+                            <div class="investigation-details">Chest x-ray, Gastrografin swallow (leakage site).</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Corrosive Esophageal Injury</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Inv</div>
+                            <div class="investigation-details">Chest and Abdomen x-ray (detect perforation), Endoscopy (after 24-48 hrs), Gastrografin swallow (after 3 wks).</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Achalasia of Oesophagus</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Inv</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Gastrografin swallow: Shows hold of dye at cardia, proximal dilatation, tortuosity (sigmoid oesophagus), smooth termination ("hen's beak").</div>
+                                <div class="sub-investigation">Oesophagoscopy: Shows dilatation, retained food, failure of LES to relax, excludes carcinoma.</div>
+                                <div class="sub-investigation">Manometry: Weak peristalsis, high pressure LES.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Hiatus Hernia (Sliding HH)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Investigations</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">EGD.</div>
+                                <div class="sub-investigation">Gastrografin meal in Trendelenburg position: Reflux of dye, appearance of bulge.</div>
+                                <div class="sub-investigation">Oesophageal manometry: Low pressure at LES.</div>
+                                <div class="sub-investigation">PH metry over 24 hrs: Probe positioned 5 cm above LES, patient records PH during symptoms of reflux (low PH indicates acid reflux).</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Hiatus Hernia (Paraesophageal HH)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Inv.</div>
+                            <div class="investigation-details">CXR (gastric fundus air in chest), GG meal, CT chest and upper abdomen.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Cancer Oesophagus</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Inv</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Gastrografin swallow: Irregular filling defect, irregular narrowing + shouldering.</div>
+                                <div class="sub-investigation">Oesophagoscopy: To diagnose + biopsy.</div>
+                                <div class="sub-investigation">CT chest and abdomen: To detect size, liver metastasis, pulmonary nodules, infiltration to adjacent structures, LNs.</div>
+                                <div class="sub-investigation">Endoluminal US: To detect mediastinum infiltration.</div>
+                                <div class="sub-investigation">PET (Positron Emission Tomography) CT: To detect distant metastasis.</div>
+                                <div class="sub-investigation">Bronchoscopy: To detect tracheal and bronchial involvement.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="anal-canal">
+                <h2 class="section-title">
+                    <span class="section-icon">🍑</span>
+                    The Anal Canal
+                </h2>
+                
+                <div class="condition">
+                    <h3 class="condition-title">Pilonidal Sinus, Anal Fissure, Haemorrhoids, Anorectal Abscess, Rectal Prolapse</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-details">Clinical examination is described but no specific diagnostic investigations like imaging or lab tests are listed in the provided sources for these conditions.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Anal Fistula</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">MRI</div>
+                            <div class="investigation-details">Can visualize the tract & the openings position.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Faecal Incontinence</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Manometry</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Electromyography</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Defaecography</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Trans anal US & MRI</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Malignant Tumors (Anal Canal)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">P.R. (Per Rectal examination)</div>
+                            <div class="investigation-details">Reveals an ulcer or a bulge.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Examination for inguinal L.N. enlargement</div>
+                            <div class="investigation-details">No specific investigations beyond clinical findings.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="appendix">
+                <h2 class="section-title">
+                    <span class="section-icon">📍</span>
+                    The Appendix to the Caecum
+                </h2>
+                
+                <div class="condition">
+                    <h3 class="condition-title">Acute Appendicitis</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Leucocyte count</div>
+                            <div class="investigation-details">Moderate leucocytosis (10,000-16,000/uL) with neutrophil predominance in 80-90% of cases; normal count does not rule out.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Urine analysis</div>
+                            <div class="investigation-details">May show few red blood cells; large number of RBCs or pus cells raises suspicion of ureteric calculus or UTI.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Pregnancy test</div>
+                            <div class="investigation-details">If ectopic pregnancy suspected.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound examination</div>
+                            <div class="investigation-details">Appendix >6mm diameter, thickened wall, periappendiceal fluid, not compressible; faecolith detected. Useful for excluding gynecological problems (transvaginal US) and right ureter stones (back pressure changes in kidney).</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT scanning</div>
+                            <div class="investigation-details">Demonstrates dilated appendix (>6mm), thickened wall, thick mesoappendix; identifies other inflammatory processes.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laparoscopy</div>
+                            <div class="investigation-details">Policy in some centers for females with right lower abdominal pain; may reveal non-surgical problem or allow surgical management.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Appendicular Abscess</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Ultrasound examination</div>
+                            <div class="investigation-details">Confirms presence of fluid.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="benign-intestinal">
+                <h2 class="section-title">
+                    <span class="section-icon">✅</span>
+                    Benign Intestinal Disease
+                </h2>
+                
+                <div class="condition">
+                    <h3 class="condition-title">Meckel's Diverticulum</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Barium meals follow through</div>
+                            <div class="investigation-details">May show a diverticulum.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Angiography</div>
+                            <div class="investigation-details">May show extravasation (in active bleeding).</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Tc Scan + gamma camera</div>
+                            <div class="investigation-details">Safer than arteriography; can demonstrate gastric mucosa.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">TB of the Intestine</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-details">No specific investigations are listed for diagnosis beyond pathology, mainly relying on clinical findings and surgical exploration for complications.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Surgical Complications of Typhoid and Paratyphoid</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-details">Primarily based on clinical picture; no specific investigations listed for diagnosis of these complications, though peritonitis and hemorrhage would have general acute abdomen investigations.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Small Intestinal Fistula</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Barium meal follow through</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Barium enema</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Fistulogram</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Intestinal Trauma</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Diagnosis</div>
+                            <div class="investigation-details">Mainly based on clinical findings.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory</div>
+                            <div class="investigation-details">Leucocytosis and hemodilution.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiological</div>
+                            <div class="sub-investigations">
+                                <div class="sub-investigation">Plain x-ray of the abdomen: May show free air under the diaphragm, multiple fluid levels due to ileus, fractures.</div>
+                                <div class="sub-investigation">U/S or CT scan: May show hematoma or intraperitoneal collection.</div>
+                            </div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">DPL (Diagnostic Peritoneal Lavage)</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Ulcerative Colitis</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiological (Barium enema)</div>
+                            <div class="investigation-details">Colonic shortening, loss of haustrations ("pipe-stem appearance"), granular mucosa, pseudopolyps.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Instrumental (Colonoscopy and biopsy)</div>
+                            <div class="investigation-details">Best method; shows mucosal abnormalities.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory</div>
+                            <div class="investigation-details">CBC (anemia, leucocytosis in acute cases), Hypoproteinemia and hypokalemia (in severe cases).</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Crohn's Disease (Regional Ileitis)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiological (Barium meal follow through)</div>
+                            <div class="investigation-details">Early shows cobblestone appearances due to longitudinal fissures, skip lesions; late shows String sign of Kantor (marked narrowing).</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Instrumental (Colonoscopy and biopsy)</div>
+                            <div class="investigation-details">Proves diagnosis of large bowel lesions; biopsy of suspected anal fissure or fistula.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory</div>
+                            <div class="investigation-details">CBC (Anemia), ESR & CRP (both elevated), Biochemical profile and serum proteins (low serum albumin, iron, folate; ↓ Ca, Mg, Zn, selenium, Vit A in severe disease).</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="biliary">
+                <h2 class="section-title">
+                    <span class="section-icon">🟢</span>
+                    Diseases of Biliary System
+                </h2>
+                
+                <div class="condition">
+                    <h3 class="condition-title">Gall Bladder Stones (Symptomatic)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Abdominal U/S (investigation of choice)</div>
+                            <div class="investigation-details">Detects size & thickness of GB & presence of stone (98% of cases); detects CBD diameter and intrahepatic biliary dilatation. Requires fasting. Shows echoes, acoustic shadows, and dependent positions.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT/MRI</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Plain X-ray</div>
+                            <div class="investigation-details">Only 10-15% are radio-opaque; multiple, faceted signet ring.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Acute Calculous Cholecystitis</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Lab</div>
+                            <div class="investigation-details">TLC > 12000, Elevated Bilirubin, Alk. Phosph.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Imaging U/S</div>
+                            <div class="investigation-details">Gallstone, thick wall, pericholecystic collection, tenderness on probing, empyema.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">CT/MRI</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Jaundice (Obstructive Jaundice)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Laboratory</div>
+                            <div class="investigation-details">LFTs (Bilirubin, Alk. Phosphatase, Gamma Gt, ALT and AST), BUN and Creatinine, CBC, Stool, Urine.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiological</div>
+                            <div class="investigation-details">Abdominal U/S, MRCP, ERCP, PTC.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Choledochal Cyst</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Radiology</div>
+                            <div class="investigation-details">No specific ones listed, but MRCP/ERCP would be implied by the context of biliary tree imaging.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Gallstone Ileus</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">X-ray and CT</div>
+                            <div class="investigation-details">Shows Rigler's triad (Intestinal obstruction, pneumobilia, aberrant gallstone in intestine).</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Mirizzi Syndrome</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Diagnosis</div>
+                            <div class="investigation-details">Most sensitive is ERCP.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Carcinoma of Gall Bladder</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">Investigations</div>
+                            <div class="investigation-details">US, CT, MRI.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="condition">
+                    <h3 class="condition-title">Strictures of Bile Duct (Neoplastic Stricture/Cholangiocarcinoma)</h3>
+                    <ul class="investigation-list">
+                        <li class="investigation-item">
+                            <div class="investigation-name">C/P</div>
+                            <div class="investigation-details">Obstructive jaundice (90%), pain, cholangitis, anorexia.</div>
+                        </li>
+                        <li class="investigation-item">
+                            <div class="investigation-name">Treatment</div>
+                            <div class="investigation-details">ERCP with metallic stent or cholecystojejunostomy for inoperable cases.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+ <div class="footer">
+        <p><a href="https://batch2021.netlify.app">https://batch2021.netlify.app</a></p>
+    </div>
+</body>
+</html>
